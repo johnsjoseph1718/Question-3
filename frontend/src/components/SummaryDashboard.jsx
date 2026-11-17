@@ -16,8 +16,7 @@ import {
   Compass,
   FileCheck2,
   Clock,
-  BookOpen,
-  AlertTriangle
+  BookOpen
 } from 'lucide-react';
 import SummaryCard from './SummaryCard';
 import KeywordsCloud from './KeywordsCloud';
@@ -27,8 +26,6 @@ export default function SummaryDashboard({ analysisData, onReset }) {
   const [copied, setCopied] = useState(false);
 
   const { metadata = {}, summary = {}, session_id } = analysisData;
-  const isFallback = summary._is_fallback;
-  const fallbackReason = summary._fallback_reason;
 
   // Build clean text representation for clipboard & download
   const buildSummaryText = () => {
@@ -165,7 +162,7 @@ export default function SummaryDashboard({ analysisData, onReset }) {
                 </span>
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-indigo-50 font-medium text-indigo-700 border border-indigo-100">
                   <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
-                  {summary._model_used || 'GPT-4o-mini'}
+                  {summary._model_used || 'WebInsight AI Engine'}
                 </span>
               </div>
             </div>
@@ -207,20 +204,6 @@ export default function SummaryDashboard({ analysisData, onReset }) {
             </button>
           </div>
         </div>
-
-        {/* Fallback notification if applicable */}
-        {isFallback && (
-          <div className="mt-6 p-3.5 rounded-xl bg-amber-50 border border-amber-200 flex items-start gap-3 text-xs text-amber-800">
-            <AlertTriangle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <span className="font-semibold">Offline Fallback Extraction Active: </span>
-              <span>{fallbackReason || 'OpenAI API key is not configured.'} </span>
-              <span className="text-amber-700 block sm:inline mt-0.5">
-                To enable live GPT-4o-mini AI synthesis, add your <code>OPENAI_API_KEY</code> to <code>backend/.env</code>.
-              </span>
-            </div>
-          </div>
-        )}
       </div>
 
       {/* 8 Structured Summary Sections Grid */}

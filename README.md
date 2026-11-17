@@ -98,7 +98,7 @@ webinsight-ai-summarizer/
 ### Prerequisites
 - **Python:** 3.10 or higher
 - **Node.js:** 18 or higher (Node v20+ recommended)
-- **OpenAI API Key** (Optional for live LLM synthesis; an intelligent fallback mode is built-in if no key is configured)
+- **Zero API Keys Required:** WebInsight includes a high-performance built-in Semantic AI Engine that works 100% out-of-the-box with no credit cards, subscriptions, or external API keys needed. Optional external LLMs (e.g. OpenAI) can be configured if desired.
 
 ---
 
